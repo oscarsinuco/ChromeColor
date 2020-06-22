@@ -1,0 +1,15 @@
+{
+  "name": "modulo-color",
+  "version": "1.0.0",
+  "description": "Paquete para extraer colores principales de una imagen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "color",
+    "image"
+  ],
+  "author": "Oscar Sinuco",
+  "license": "ISC"
+}
