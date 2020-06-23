@@ -5,19 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba</title>
+    <style>
+        canvas{
+            background-image: url("images/fondo");
+            background-size: contain;
+        }
+    </style>
 </head>
 
 <body>
     <img src="./images/image.png"
         alt="" srcset="" id="imagen">
-<canvas id="canvas">
-
-</canvas>
     <script src="./modules/colors-extract.js" type="module">
     </script>
     <script type="module">
         import { getColors } from "./modules/colors-extract.js";
-        getColors('#imagen','black',0.2)
+        let canvas = getColors('#imagen',['green', 'red'],0.1)
+        document.querySelector("body").appendChild(canvas)
     </script>
 </body>
 
