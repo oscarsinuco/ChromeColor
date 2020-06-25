@@ -237,7 +237,7 @@
     <script src="./modules/colors-extract.js" type="module">
     </script>
     <script type="module">
-        import { removeColors } from "./modules/colors-extract.min.js";
+        import { removeColors } from "./modules/colors-extract.js";
         removeColors('#imagen', ['black'], 0.5).then(canvas => {
             console.log(canvas);
             document.querySelector(".ex").appendChild(canvas)
