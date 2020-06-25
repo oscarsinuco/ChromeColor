@@ -19,9 +19,13 @@
     <script src="./modules/colors-extract.js" type="module">
     </script>
     <script type="module">
-        import { getColors } from "./modules/colors-extract.js";
-        let canvas = getColors('#imagen',['green', 'red'],0.1)
-        document.querySelector("body").appendChild(canvas)
+        import { removeColors } from "./modules/colors-extract.js";
+        removeColors('#imagen',['black'],0.5).then(canvas=>{
+            document.querySelector("body").appendChild(canvas)
+        }).catch(err=>{
+            console.log(err)
+        })
+        
     </script>
 </body>
 
