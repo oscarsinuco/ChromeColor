@@ -1,0 +1,20 @@
+{
+  "name": "colors-extract",
+  "version": "1.0.0",
+  "description": "A package to remove uniform backgrounds in images",
+  "main": "colors-extract.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Background",
+    "color",
+    "image.",
+    "extract"
+  ],
+  "author": "Oscar Sinuco",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-minify": "^0.5.1"
+  }
+}

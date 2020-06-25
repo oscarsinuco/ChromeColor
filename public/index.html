@@ -1,31 +1,249 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <title>Prueba</title>
     <style>
-        canvas{
+        * {
+            font-size: 1.3rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        li {
+            list-style: none;
+            border-bottom: 1px solid black;
+            width: 20%;
+            padding: 10px;
+        }
+
+        body {
+            padding: 5%;
+            box-sizing: border-box;
+        }
+
+        summary {
+            padding: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        canvas {
             background-image: url("images/fondo");
             background-size: contain;
+        }
+
+        .example {
+            width: 80%;
+            box-sizing: border-box;
+            margin: auto;
+            min-height: 600px;
+        }
+
+        img,
+        canvas {
+            float: left;
+            width: 45%;
+            margin: 2.5%;
+            -webkit-box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+            border-radius: 10px;
+        }
+
+        .example {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+
+        code {
+            word-wrap: break-word;
+            background-color: darkslategrey;
+            padding: 50px;
+            box-sizing: border-box;
+            color: floralwhite;
+            border-radius: 10px;
+            -webkit-box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+            width: 85%;
+        }
+
+        code * {
+            font-size: 1.1rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+    <style>
+        @media (max-width: 800px) {
+            body {
+                width: 100%;
+                margin: auto;
+            }
+
+            code *,
+            code {
+                font-size: 0.6rem;
+
+            }
+
+            code {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .code {
+                padding: 3px;
+            }
+
+            .example {
+                min-height: 200px;
+            }
+
+            li {
+                width: 80%;
+            }
+
+            img,
+            canvas {
+                width: 100%;
+                -webkit-box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+                box-shadow: 0px 0px 52px -15px rgba(0, 0, 0, 0.75);
+                border-radius: 10px;
+                margin: 0px;
+                margin-top: 30px;
+            }
+
+            .example {
+                width: 100% !important;
+            }
+        }
+
+        @media (min-width: 1100px) {
+            body {
+                width: 70%;
+                margin: auto;
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 1099px) {
+            body {
+                width: 90%;
+                margin: auto;
+            }
+        }
+        code a{
+            text-decoration-line: underline ;
+            color: white;
+        }
+        code a:hover{
+            cursor: pointer;
         }
     </style>
 </head>
 
-<body>
-    <img src="./images/image.png"
-        alt="" srcset="" id="imagen">
+<body id="top">
+    <h1>colors-extract.js</h1>
+    <details>
+        <summary>
+            Documentation
+        </summary>
+        <ul>
+            <li><a href="#how">How to use</a></li>
+            <li><a href="#code">Example</a></li>
+            <li><a href="#install">Installation</a></li>
+        </ul>
+    </details>
+    <details>
+        <summary>
+            Donate
+        </summary>
+        <ul>
+            <li><a href="https://www.patreon.com/oscarsinuco" target="_blank">Patreon</a></li>
+        </ul>
+    </details>
+    <div class="example">
+        <div class="ex">
+            <img src="./images/image.png" alt="" srcset="" id="imagen">
+        </div>
+    </div>
+    <br>
+    <label for="">removeColor function:</label>
+    <div class="code" id="how">
+        <code>
+            It is a function that returns a promise that when resolved returns an HTML Object.<br><br>
+            Its possible parameters are: <br>
+            <b>removecolors(id | url , colors , variability) </b>
+
+            <br><br>
+            <b>id | url</b>: #id reference to the id of the html object that contains the image or url of the image.<br>
+            <br>
+            <b>colors</b>: A string or Array that represents the color to be removed, can be red, yellow, blue, green, black, white or orange. Example: 'blue' or ['blue', 'red']
+            <br><br>
+            <b>variability</b>: A double value that must be >= 0 and < 1  represents the variation of the color to be removed.
+        </code>
+    </div>
+    <br>
+    <label for="">Example:</label>
+    <div class="code" id="code">
+        <code><br>
+            import { removeColors } from "./modules/colors-extract.min.js";<br>
+            removeColors('#imagen', ['black'], 0.5).then( canvas => {<br>
+                &emsp;&emsp;document.querySelector(".example").appendChild(canvas)<br>
+            }).catch( err => {<br>
+                &emsp;&emsp;console.log(err)<br>
+            })
+        </code>
+    </div>
+
+
+    <br>
+    <label for="">Installation:</label>
+    <div class="code" id="install">
+        <code><br>
+            <b>With npm:</b> npm install colors-extract --save<br>
+            <b>Width cdn:</b> &lt;script src="https://code.highcharts.com/highcharts.js"&gt;&lt;/script&gt;
+            <br>
+            <b><a href="https://code.highcharts.com/highcharts.js" target="_blank">Or download here</a> </b>
+        </code>
+        
+    </div>
+
+
+
+    <h1><a href="#top">Go up ▲</a></h1>
     <script src="./modules/colors-extract.js" type="module">
     </script>
     <script type="module">
-        import { removeColors } from "./modules/colors-extract.js";
-        removeColors('#imagen',['black'],0.5).then(canvas=>{
-            document.querySelector("body").appendChild(canvas)
-        }).catch(err=>{
+        import { removeColors } from "./modules/colors-extract.min.js";
+        removeColors('#imagen', ['black'], 0.5).then(canvas => {
+            console.log(canvas);
+            document.querySelector(".ex").appendChild(canvas)
+        }).catch(err => {
             console.log(err)
         })
-        
     </script>
 </body>
 
